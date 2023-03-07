@@ -1,10 +1,10 @@
-
+require('dotenv').config()
 const express = require('express');
 const app = express()
 const Products = require('./Routes/Product.routes');
 const home = require('./home');
 
-const PORT = 5000;
+const PORT = process.env.PORT || 80;
 app.use(express.json());
 
 app.use('/product', Products);
