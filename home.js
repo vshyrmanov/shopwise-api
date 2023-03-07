@@ -8,7 +8,7 @@ router.get("/", async (req, res, next) => {
 		title: "Express Testing",
 		message: "The app is working properly! ))",
 		test: process.env.METRO,
-		test2: process.env.FOZZY,
+		// test2: process.env.FOZZY,
 	});
 });
 
