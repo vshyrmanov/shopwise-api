@@ -127,8 +127,9 @@ const controller = {
 	search: async (req, res) => {
 		try {
 			const { search } = req.body;
-			const result = await generateList(search)
-			res.json(result)
+			const dataMetro = await getMetro(search);
+			// const result = await generateList(search)
+			res.json(dataMetro)
 		} catch (e) {
 			res.json({error: e});
 		}
