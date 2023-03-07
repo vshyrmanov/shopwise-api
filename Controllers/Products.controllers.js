@@ -71,7 +71,7 @@ const getFozzy = async function (search) {
 const getMetro = async function (search) {
 	const browser = await puppeteer.launch( {headless: true} );
 	const page = await browser.newPage();
-	await page.goto(`${process.env.METRO}${search}`)
+	await page.goto(`https://metro.zakaz.ua/uk/search/?q=${search}`)
 	const data = await page.evaluate(function () {
 		const events = document.querySelectorAll(".ProductTile__details")
 		const array = [];
