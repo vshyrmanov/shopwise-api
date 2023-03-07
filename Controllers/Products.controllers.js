@@ -69,7 +69,7 @@ const getFozzy = async function (search) {
 }
 
 const getMetro = async function (search) {
-	const browser = await puppeteer.launch( {headless: true} );
+	const browser = await puppeteer.launch( {headless: false} );
 	const page = await browser.newPage();
 	await page.goto(`https://metro.zakaz.ua/uk/search/?q=${search}`)
 	const data = await page.evaluate(function () {
@@ -127,9 +127,9 @@ const controller = {
 	search: async (req, res) => {
 		try {
 			const { search } = req.body;
-			// const dataMetro = await getMetro(search);
+			const dataMetro = await getMetro(search);
 			// const result = await generateList(search)
-			res.json(search)
+			res.json(dataMetro)
 		} catch (e) {
 			res.json({error: e});
 		}
