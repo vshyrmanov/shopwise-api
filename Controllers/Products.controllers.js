@@ -1,5 +1,6 @@
 const puppeteer = require("puppeteer");
 require('dotenv').config()
+const chromium = require('chrome-aws-lambda');
 
 const getNovus = async function (search) {
 	const browser = await puppeteer.launch( {headless: true} );
@@ -69,7 +70,14 @@ const getFozzy = async function (search) {
 }
 
 const getMetro = async function (search) {
-	const browser = await puppeteer.launch( {headless: false} );
+	const browser = await chromium.puppeteer.launch({
+		args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
+		defaultViewport: chromium.defaultViewport,
+		executablePath: await chromium.executablePath,
+		headless: true,
+		ignoreHTTPSErrors: true,
+	})
+	// const browser = await puppeteer.launch( {headless: true} );
 	const page = await browser.newPage();
 	await page.goto(`https://metro.zakaz.ua/uk/search/?q=${search}`)
 	const data = await page.evaluate(function () {
