@@ -164,7 +164,7 @@ const getMetro = async function (search) {
 const controller = {
 	search: async (req, res) => {
 		try {
-			const { search } = req.body;
+			// const { search } = req.body;
 			const dataMetro = await getMetro();
 			// const result = await generateList(search)
 			res.json(dataMetro)

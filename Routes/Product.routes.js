@@ -2,7 +2,8 @@ const {Router} = require('express');
 const router = Router()
 const controller = require('../Controllers/Products.controllers');
 
-router.post('/search', controller.search);
+// router.post('/search', controller.search);
+router.get('/search', controller.search);
 // router.post('/item/create', controller.createItem);
 //
 // router.get('/list/getAll', controller.getAllLists);
