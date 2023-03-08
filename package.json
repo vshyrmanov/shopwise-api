@@ -8,6 +8,7 @@
   },
   "scripts": {
     "build": "NODE_ENV=production AWS_LAMBDA_FUNCTION_NAME=true",
+    "vercel-build": "NODE_ENV=production AWS_LAMBDA_FUNCTION_NAME=true",
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
